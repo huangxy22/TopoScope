@@ -766,7 +766,7 @@ sub python_clique
 	printf "#  %s\n", td_asn($_) foreach (@ases);
     }
 
-    $pid = open2(\*PY_IN, \*PY_OUT, '/usr/bin/python');
+    $pid = open2(\*PY_IN, \*PY_OUT, '/usr/bin/python3');
     print PY_OUT "import graph\nx = graph.graph()\n";
     print PY_OUT "x.add_node($_)\n" foreach (@ases);
 
@@ -784,7 +784,7 @@ sub python_clique
 
     print PY_OUT "S = x.find_all_cliques()\n";
     print PY_OUT "for i in S:\n";
-    print PY_OUT "  print i\n";
+    print PY_OUT "  print(i)";
     close PY_OUT;
 
     my %cs;
